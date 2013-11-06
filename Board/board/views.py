@@ -9,4 +9,10 @@ def my_view(request):
     session.flash("You need sign in before.")
     return HTTPFound(location=request.route_url('login'))
 
-  return {'title': 'Board','session':session}
+  messages = request.db['board'].find()
+  _messages = []
+  for m in messages:
+    _messages.append(m)
+
+  
+  return {'title': 'Board','session':session, 'messages': _messages}
