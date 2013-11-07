@@ -21,41 +21,32 @@
         </div>
       </div>
   <div class="container">
-    
-
       <div class="alert alert-block" tal:condition="session.peek_flash()" >
         <button type="button" class="close" data-dismiss="alert">&times;</button>
         <h4>${session.pop_flash()}</h4>
       </div>
 
-    <div class="row">
-      <h2>${post['title']} </h2>
-      <p>${post['message']} </p>
-      <span>created by: ${post['user_name']} </span>
-
-      <h4>Answers: </h4>
-      <p tal:repeat="answer post['answers']" ><span class="label label-info">A: </span> ${answer.message}  </p>
-    </div>
-
-    <div class="row">
-      <form method="post">
-        <fieldset>
-          <legend>Answer</legend>
-          
-          <div>
-            <textarea name="message" placeholder="Type text here..." rows="3"></textarea>
-          </div>
-          
-          <button type="submit" class="btn btn-primary">Submit</button>
-          <a class="" href="/">Cancel </a>
-        </fieldset>
-      </form>
-    </div>
-
+      <div class="row">
       
+
+        <div class="row">
+          <form method="post">
+            <fieldset>
+              <legend>Question:</legend>
+              <div>
+                <input type="text" placeholder="Type title here..." name="title">
+              </div>
+              <div>
+                <textarea name="message" placeholder="Type text here..." rows="3"></textarea>
+              </div>
+              
+              <button type="submit" class="btn btn-primary">Submit</button>
+              <a class="" href="/">Cancel </a>
+            </fieldset>
+          </form>
+        </div>
+
+    </div>
   </div>
-
-  
-
 </body>
 </html>

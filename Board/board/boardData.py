@@ -18,5 +18,5 @@ class BoardData(object):
     
     
 
-  def insert(self,post):
-    pass
+  def insert(self,user_name, title, message):
+    self.db.insert({'title': title, 'message': message, 'user_name': user_name, 'answers': []})
