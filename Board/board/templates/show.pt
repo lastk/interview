@@ -6,8 +6,7 @@
   <script src="${request.static_url('board:static/js/bootstrap.min.js')}"></script>
 </head>
 <body>
-  <div class="container">
-    <div class="navbar navbar-inverse">
+<div class="navbar navbar-inverse">
         <div class="navbar-inner">
           <div class="container">
 
@@ -21,33 +20,37 @@
           </div>
         </div>
       </div>
+  <div class="container">
+    
 
-    <div class="alert alert-block" tal:condition="session.peek_flash()" >
+      <div class="alert alert-block" tal:condition="session.peek_flash()" >
         <button type="button" class="close" data-dismiss="alert">&times;</button>
         <h4>${session.pop_flash()}</h4>
       </div>
 
-      <div tal:condition="messages">
-          <table class="table">
-            <thead>
-              <tr>
-                <th>Title</th>
-                <th>User</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tal:block repeat="message messages">
-                <tr>
-                  <td tal:content="message.title"> </td>                  
-                  <td tal:content="message.user_name"> </td>                  
-                  <td> <a href="/show/${message._id}" > View</a>  </td>
-                </tr>
-              </tal:block>
-            </tbody>      
-          </table>
+    <div class="row">
+      <h2>${post['title']} </h2>
+      <p>${post['message']}</p>      
+
+      <h4>Answers: </h4>
+      <p tal:repeat="answer post['answers']" ><span class="label label-info">A: </span>${answer.message}  </p>
+    </div>
+
+    <div class="row">
+      <form method="post">
+        <fieldset>
+          <legend>Answer</legend>
           
-      </div>
+          <div>
+            <textarea placeholder="Type text here..." rows="3"></textarea>
+          </div>
+          
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </fieldset>
+      </form>
+    </div>
+
+      
   </div>
 
   

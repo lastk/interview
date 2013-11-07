@@ -25,5 +25,6 @@ def main(global_config, **settings):
     config.add_request_method(add_db, 'db', reify= True)
     config.add_route('home', '/')
     config.add_route('login', '/login')
+    config.add_route('show', '/show/{id}')
     config.scan()
     return config.make_wsgi_app()
