@@ -13,10 +13,12 @@ def show(request):
     session.flash("You need sign in before.")
     return HTTPFound(location=request.route_url('login'))
 
-
+  id   = request.matchdict['id']
   data = BoardData(request)
+
+  if request.method == "POST":
+    data.update(id,request.POST.get("message"))
   
-  id      = request.matchdict['id']
   post    = data.find(id)
   
   return {'title':'View','session':session, 'post': post}

@@ -12,6 +12,10 @@ class BoardData(object):
 
   def find(self,id):
     return self.db.find_one({'_id': ObjectId(id)})
+
+  def update(self,id, message):
+    self.db.update({'_id':ObjectId(id)}, {'$push': {'answers': {'message': message}}})
+    
     
 
   def insert(self,post):
